@@ -25,6 +25,7 @@
 {% endmacro %}
 
 {% macro bigquery__cluster_keys() %}
+{%- set bq_partition_granularity = var("dbt_aql").get("bigquery").get(stream).get("partition_granularity", "month") -%}
 {%- set columns = dbt_aql.schema_columns() -%}
 {%- set cluster_cols = [
     columns.activity,
@@ -34,7 +35,7 @@
 {%- set partition_cols = {
       "field": columns.ts,
       "data_type": "timestamp",
-      "granularity": "month"
+      "granularity": bq_partition_granularity
 } -%}
 {%- do return({"cluster_by": cluster_cols, "partition_by": partition_cols}) -%}
 {% endmacro %}
