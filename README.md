@@ -111,7 +111,7 @@ _Required_: No
 ## **Other Configuration options**
 Allows for database specific configuration options. For the moment there is only a bigquery config available.
 
-#### **`bigquery`**
+### **`bigquery`**
 _Description_: This variable takes 0 or 1 nested variables.
 
 _Required_: No
