@@ -50,6 +50,8 @@ vars:
       stream_2:
         customer_id_alias: entity_uuid
         model_prefix: prefix_2__
+    bigquery:
+      partition_granularity: day
 ```
 
 ## **Project-Level Column Configurations**
@@ -102,6 +104,21 @@ _Required_: No
 
 #### **`model_prefix`**
 _Description_: This variable takes a string that represents the prefix used for the names of all models associated with the corresponding Activity Schema, as it is a common practice to duplicate an activity across multiple streams, and to distinguish with a prefix in the model name itself. This variable is used for aliasing purposes downstream to improve readability of columns generated in the dataset.
+
+_Required_: No
+</br></br>
+
+## **Other Configuration options**
+Allows for database specific configuration options. For the moment there is only a bigquery config available.
+
+#### **`bigquery`**
+_Description_: This variable takes 0 or 1 nested variables.
+
+_Required_: No
+</br></br>
+
+#### **`partition_granularity`**
+_Description_: This variable takes a string setting the granularity of the partition timestamp column. Depending on your event volume it can be set to one of the following values: hour, day, month, year
 
 _Required_: No
 </br></br>
